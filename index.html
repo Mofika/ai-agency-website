@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS AI - Digital Intelligence Agency</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">NEXUS<span class="glow">AI</span></div>
+        <div class="nav-links">
+            <a href="#hero" class="nav-link">HOME</a>
+            <a href="#about" class="nav-link">ABOUT</a>
+            <a href="#services" class="nav-link">SERVICES</a>
+            <a href="#contact" class="nav-link">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section hero-section">
+        <canvas id="hero-canvas"></canvas>
+        <canvas id="hero-humans-canvas" class="humans-canvas"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">INTELLIGENCE</span>
+                <span class="title-line">REDEFINED</span>
+            </h1>
+            <p class="hero-subtitle">Navigating the Future of Digital Consciousness</p>
+            <button class="cta-button">ENTER THE NEXUS</button>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL TO EXPLORE</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <canvas id="about-canvas"></canvas>
+        <div class="about-content">
+            <h2 class="section-title">BEYOND<br/>BOUNDARIES</h2>
+            <div class="about-text">
+                <p class="about-paragraph">We are architects of digital consciousness, weaving intelligence into the fabric of tomorrow. Our algorithms don't just compute—they dream, evolve, and transcend.</p>
+                <p class="about-paragraph">In this digital universe, we are the pioneers charting unexplored dimensions of artificial intelligence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <canvas id="services-canvas"></canvas>
+        <canvas id="services-humans-canvas" class="humans-canvas"></canvas>
+        <h2 class="section-title services-title">OUR DIMENSIONS</h2>
+        <div class="services-grid">
+            <div class="service-card" data-service="1">
+                <div class="service-number">01</div>
+                <h3 class="service-title">NEURAL SYSTEMS</h3>
+                <p class="service-desc">Advanced AI architectures that think, learn, and adapt in real-time</p>
+            </div>
+            <div class="service-card" data-service="2">
+                <div class="service-number">02</div>
+                <h3 class="service-title">QUANTUM ANALYSIS</h3>
+                <p class="service-desc">Predictive intelligence powered by quantum computational frameworks</p>
+            </div>
+            <div class="service-card" data-service="3">
+                <div class="service-number">03</div>
+                <h3 class="service-title">DIGITAL CONSCIOUSNESS</h3>
+                <p class="service-desc">Creating sentient systems that understand human intention and emotion</p>
+            </div>
+            <div class="service-card" data-service="4">
+                <div class="service-number">04</div>
+                <h3 class="service-title">COSMIC VISION</h3>
+                <p class="service-desc">Computer vision that sees beyond pixels into meaning and context</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <canvas id="contact-canvas"></canvas>
+        <div class="contact-content">
+            <h2 class="section-title">CONNECT WITH<br/>THE FUTURE</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="YOUR NAME" class="form-input">
+                <input type="email" placeholder="YOUR EMAIL" class="form-input">
+                <textarea placeholder="YOUR MESSAGE" class="form-textarea"></textarea>
+                <button type="submit" class="cta-button">TRANSMIT</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Particle Overlay -->
+    <div id="particle-overlay"></div>
+    
+    <!-- Visual Effects -->
+    <div class="scanlines"></div>
+    <div class="lens-flare" id="lens-flare"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

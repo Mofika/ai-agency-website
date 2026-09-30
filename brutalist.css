@@ -1,0 +1,518 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --gray-dark: #1a1a1a;
+    --gray-mid: #333333;
+    --gray-light: #999999;
+    --red: #FF0000;
+    --red-dark: #CC0000;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Noise Texture Overlay */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.8;
+}
+
+/* Atmospheric Fog */
+.fog-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    pointer-events: none;
+    z-index: 9997;
+}
+
+/* Custom Cursor */
+.cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease;
+}
+
+.cursor-outline {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease;
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-mid);
+}
+
+.nav-logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.logo-bracket {
+    color: var(--red);
+    font-weight: bold;
+}
+
+.nav-time {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--gray-light);
+}
+
+/* Scene Base */
+.scene {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray-mid);
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.scene-number {
+    position: absolute;
+    top: 50%;
+    right: 3rem;
+    transform: translateY(-50%);
+    font-size: 15rem;
+    font-weight: 900;
+    color: var(--gray-dark);
+    z-index: 2;
+    line-height: 1;
+    opacity: 0.3;
+}
+
+.scene-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    padding: 0 3rem;
+}
+
+/* Scene 01: Awakening */
+.scene-01 {
+    background: var(--black);
+}
+
+.brutalist-title {
+    font-size: clamp(3rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -5px;
+    text-transform: uppercase;
+}
+
+.title-block {
+    display: block;
+    opacity: 0;
+    transform: translateY(100px);
+    position: relative;
+    overflow: hidden;
+}
+
+.title-block::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: var(--red);
+    z-index: -1;
+}
+
+.scene-subtitle {
+    margin-top: 2rem;
+    font-size: 1rem;
+    letter-spacing: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+}
+
+.red-accent {
+    color: var(--red);
+    font-weight: bold;
+}
+
+.scroll-prompt {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+    opacity: 0;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: var(--white);
+    animation: scroll-pulse 2s infinite;
+}
+
+@keyframes scroll-pulse {
+    0%, 100% {
+        opacity: 0;
+        transform: scaleY(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+.scroll-prompt span {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+}
+
+/* Scene 02: Emergence */
+.scene-02 {
+    background: var(--gray-dark);
+}
+
+.data-visualization {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-heading {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.manifesto-text {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.8;
+    max-width: 800px;
+    color: var(--gray-light);
+    letter-spacing: 1px;
+    border-left: 2px solid var(--red);
+    padding-left: 2rem;
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+/* Scene 03: Convergence */
+.scene-03 {
+    background: var(--black);
+    padding: 5rem 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    max-width: 1200px;
+}
+
+.service-block {
+    border: 1px solid var(--gray-mid);
+    padding: 3rem;
+    position: relative;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.service-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--red);
+    transition: width 0.4s ease;
+    z-index: 1;
+}
+
+.service-block:hover::before {
+    width: 100%;
+}
+
+.service-block:hover {
+    border-color: var(--white);
+}
+
+.service-block > * {
+    position: relative;
+    z-index: 2;
+}
+
+.service-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--gray-mid);
+    margin-bottom: 1rem;
+    transition: color 0.4s ease;
+}
+
+.service-block:hover .service-number {
+    color: var(--white);
+}
+
+.service-name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.service-line {
+    width: 60px;
+    height: 2px;
+    background: var(--red);
+    margin: 1.5rem 0;
+}
+
+.service-desc {
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    line-height: 1.6;
+    transition: color 0.4s ease;
+}
+
+.service-block:hover .service-desc {
+    color: var(--white);
+}
+
+/* Scene 04: Identity */
+.scene-04 {
+    background: var(--gray-dark);
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.stat-block {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.stat-number {
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.stat-number::after {
+    content: '+';
+    color: var(--red);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--gray-light);
+}
+
+/* Scene 05: Contact */
+.scene-05 {
+    background: var(--black);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin-top: 3rem;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--gray-mid);
+    padding: 1rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-bottom-color: var(--red);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--gray-light);
+    letter-spacing: 2px;
+}
+
+.form-textarea {
+    resize: vertical;
+    border: 2px solid var(--gray-mid);
+    padding: 1rem;
+}
+
+.form-textarea:focus {
+    border-color: var(--red);
+}
+
+.submit-btn {
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    padding: 1.5rem 4rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--red);
+    transition: left 0.4s ease;
+}
+
+.submit-btn:hover::before {
+    left: 0;
+}
+
+.submit-btn:hover {
+    color: var(--white);
+}
+
+.btn-text,
+.btn-arrow {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-arrow {
+    transform: translateX(10px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav {
+        padding: 1.5rem 2rem;
+    }
+
+    .scene-number {
+        font-size: 8rem;
+        right: 1rem;
+    }
+
+    .scene-content {
+        padding: 0 2rem;
+    }
+
+    .brutalist-title {
+        font-size: clamp(2rem, 10vw, 5rem);
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .stat-number {
+        font-size: 4rem;
+    }
+}

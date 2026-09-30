@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHETYPE — Digital Intelligence Agency</title>
+    <link rel="stylesheet" href="brutalist.css">
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Atmospheric Fog -->
+    <div class="fog-layer"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <span class="logo-bracket">[</span>ARCHETYPE<span class="logo-bracket">]</span>
+        </div>
+        <div class="nav-time" id="current-time">00:00:00</div>
+    </nav>
+
+    <!-- Scene 01: Awakening -->
+    <section class="scene scene-01" data-scene="01">
+        <canvas id="scene-01-canvas"></canvas>
+        <div class="scene-number">01</div>
+        <div class="scene-content">
+            <h1 class="brutalist-title">
+                <span class="title-block">INTELLIGENCE</span>
+                <span class="title-block">WITHOUT</span>
+                <span class="title-block">BOUNDARIES</span>
+            </h1>
+            <div class="scene-subtitle">
+                <span class="red-accent">●</span> SYSTEM ONLINE
+            </div>
+        </div>
+        <div class="scroll-prompt">
+            <div class="scroll-line"></div>
+            <span>INITIALIZE</span>
+        </div>
+    </section>
+
+    <!-- Scene 02: Emergence -->
+    <section class="scene scene-02" data-scene="02">
+        <canvas id="scene-02-canvas"></canvas>
+        <div class="scene-number">02</div>
+        <div class="scene-content">
+            <div class="data-visualization" id="waveform"></div>
+            <h2 class="section-heading">
+                WE ARE THE<br/>
+                <span class="red-accent">ARCHITECTS</span><br/>
+                OF TOMORROW
+            </h2>
+            <p class="manifesto-text">
+                In the intersection of human intuition and machine precision,
+                we forge new realities. Our algorithms don't just compute—
+                they understand, adapt, and transcend.
+            </p>
+        </div>
+    </section>
+
+    <!-- Scene 03: Convergence -->
+    <section class="scene scene-03" data-scene="03">
+        <canvas id="scene-03-canvas"></canvas>
+        <div class="scene-number">03</div>
+        <div class="scene-content">
+            <div class="services-grid">
+                <div class="service-block" data-index="01">
+                    <div class="service-number">01</div>
+                    <h3 class="service-name">NEURAL ARCHITECTURE</h3>
+                    <div class="service-line"></div>
+                    <p class="service-desc">Advanced intelligence systems that learn and evolve</p>
+                </div>
+                <div class="service-block" data-index="02">
+                    <div class="service-number">02</div>
+                    <h3 class="service-name">PREDICTIVE SYNTHESIS</h3>
+                    <div class="service-line"></div>
+                    <p class="service-desc">Quantum-powered forecasting and decision frameworks</p>
+                </div>
+                <div class="service-block" data-index="03">
+                    <div class="service-number">03</div>
+                    <h3 class="service-name">AUTONOMOUS SYSTEMS</h3>
+                    <div class="service-line"></div>
+                    <p class="service-desc">Self-optimizing infrastructure for the future</p>
+                </div>
+                <div class="service-block" data-index="04">
+                    <div class="service-number">04</div>
+                    <h3 class="service-name">CONSCIOUSNESS MAPPING</h3>
+                    <div class="service-line"></div>
+                    <p class="service-desc">Understanding intention through data patterns</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scene 04: Identity -->
+    <section class="scene scene-04" data-scene="04">
+        <canvas id="scene-04-canvas"></canvas>
+        <div class="scene-number">04</div>
+        <div class="scene-content">
+            <div class="stats-container">
+                <div class="stat-block">
+                    <div class="stat-number" data-target="2048">0</div>
+                    <div class="stat-label">NEURAL NODES</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number" data-target="99.9">0</div>
+                    <div class="stat-label">ACCURACY RATE</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number" data-target="147">0</div>
+                    <div class="stat-label">ACTIVE SYSTEMS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scene 05: Contact -->
+    <section class="scene scene-05" data-scene="05">
+        <canvas id="scene-05-canvas"></canvas>
+        <div class="scene-number">05</div>
+        <div class="scene-content">
+            <h2 class="section-heading">
+                INITIATE<br/>
+                <span class="red-accent">CONNECTION</span>
+            </h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="[NAME]" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="[EMAIL]" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-textarea" placeholder="[MESSAGE]" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">TRANSMIT</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="brutalist.js"></script>
+</body>
+</html>
